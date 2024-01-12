@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+        body {
+            background-color: #22254b;
+            font-family: "Poppins", sans-serif;
+            
+        }
+
+        header {
+            background-color: #373b69;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .header-contant a,.logo a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .header-contant a:hover{
+            color: #a7b0ff;
+        }
+        .logo a:hover{
+            color: #a7b0ff;
+        }
+
+        .card {
+            width: 300px;
+            height: 700px;
+            background-color: #373b69;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+
+        .card img{
+            overflow: hidden;
+        }
+
+        .card-body {
+            color: #eee;     
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+        .card-body h5 {
+            font-size: 25px;
+            font-weight: 800;
+        }
+        .btn{
+            width: 100%;
+            margin: 5px;
+            background-color: #707df0;
+            border: 0px;
+        }
+        .btn:hover{
+            background-color: #a7b0ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h2 class="logo"><a href="/">myMovie.com</a></h2>
+            <div class="header-contant">
+                <a href="/add">Add</a>
+                <a href="/">View</a>
+            </div>
+        </header>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <% record.map((val,i)=>{i=i+1 %>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="<%= val.image  %>" class="card-img-top" alt="Movie Image">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= val.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= val.des %>
+                            </p>
+                            <p class="card-text">Price: <%= val.price %>
+                            </p>
+                            <a href="/deleteData?id=<%= val.id %>" class="btn btn-danger">Delete</a>
+                            <a href="/editData?id=<%= val.id %>" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+                    <!-- Repeat the above card structure for other movies -->
+                    <!-- You can use a loop to generate cards dynamically based on your data -->
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
